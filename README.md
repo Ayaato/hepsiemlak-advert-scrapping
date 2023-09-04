@@ -1,31 +1,59 @@
 # Ev Satın Almak İsteyenler İçin Hızlı Çözüm 🚀
 Bilgisayarlarımızın veri kazıma ve veritabanı işlemleriyle heyecan verici bir yolculuğa çıkmasını sağlayacak kodları inceleyelim.
 
-📂 **Dosya Yapısı**
-Projemiz, iki ana Python dosyasından oluşuyor: `pub.py` ve `home_scraping.py`. Şimdi bu dosyaların içeriğine yakından bakalım!
+## Proje Tanımı
 
-### pub.py
-Dosya, 🧹 `publisher` fonksiyonunu içeriyor. Bu fonksiyon, verilerimizi temizlemek ve düzenlemek için harikalar yaratıyor!
+Bu proje, "hepsiemlak.com" web sitesinden İstanbul'daki satılık ev ilanlarını çeken ve bu verileri bir SQL veritabanına kaydeden bir web kazıma (web scraping) uygulamasını içermektedir. Proje, iki Python dosyasından oluşmaktadır: `pub.py` ve `home_scraping.py`.
 
-🔮 `publisher(titlename)`:
-- Açıklama: Verilen metindeki özel karakterleri temizler ve uygun bir şekilde düzenler.
-- Kullanım: `titlename` argümanı, temizlenmek istenen metni içerir.
-- Dönüş Değeri: Temizlenmiş metni döndürür.
+## Dosya Yapısı
 
-### home_scraping.py
-Bu dosya, 🌐 web sitesinden veri kazıma işlemlerini gerçekleştiriyor ve verileri 🗄️ SQL veritabanına kaydediyor.
+- `pub.py`: Özel karakterleri temizlemek için kullanılan `publisher` fonksiyonunu içerir.
+- `home_scraping.py`: Web kazıma işlemlerini gerçekleştirir ve verileri SQL veritabanına kaydeder.
 
-🚀 `Main` Sınıfı:
-- Açıklama: Web sitesinden veri kazıma işlemlerini yöneten ana sınıf.
-- İnit (Yapıcı) Metodu: URL'yi alır ve gerekli değişkenleri başlatır.
-- 🕵️‍♀️ `find` Metodu: İlanların URL'lerini çeker ve `self.links` listesine ekler.
-- 💾 `save` Metodu: İlanlardaki verileri çeker, temizler, SQL tablosuna ekler ve kaydeder.
+## `pub.py` Dosyası
 
-Projeyi çalıştırmak için, `Main` sınıfı örneği oluşturuyor, ilan URL'lerini buluyor ve verileri kaydediyoruz.
+### `publisher` Fonksiyonu
 
-💡 **Önemli Notlar**
-- Bu kodlar, web sitesinin yapısına ve verilerin yerleştirilme biçimine dayanıyor. 🏗️ Web sitesi yapısında değişiklik olduğunda kodları güncellememiz gerekebilir.
-- SQL sunucusu bağlantı bilgileri 🤐 gizli bilgilerdir ve güvenliğinizi sağlamak için korunmalıdır. Bu bilgileri güvenli bir şekilde saklamalısınız.
-- Kodlar, web sitesini aşırı yüklememeye dikkat ederek belirli bir hızda istek gönderiyor. 🚦
+```python
+def publisher(titlename):
+    # Verilen metindeki özel karakterleri temizler ve düzenler.
+    # Args:
+    #   titlename (str): Temizlenmek istenen metin.
+    # Returns:
+    #   str: Temizlenmiş metin.
+```
 
-Bu projenin heyecan verici bir şekilde çalışması için web sitesinin yapısına ve ihtiyaçlarınıza uygun olarak kodları özelleştirmeniz gerekebilir. Hazır mısınız? 🚀
+Bu fonksiyon, verilen metindeki özel karakterleri kaldırmak ve uygun bir şekilde düzenlemek için kullanılır. Bu temizleme işlemi, SQL veritabanı sütun başlıklarını oluştururken yardımcı olur.
+
+## `home_scraping.py` Dosyası
+
+### `Main` Sınıfı
+
+```python
+class Main:
+    def __init__(self, url):
+        # Yapıcı metodu: URL'yi alır ve gerekli değişkenleri başlatır.
+    
+    def find(self):
+        # İlanların URL'lerini çeker ve `self.links` listesine ekler.
+    
+    def save(self):
+        # İlanlardaki verileri çeker, temizler, SQL tablosuna ekler ve kaydeder.
+```
+
+Bu sınıf, web sitesinden veri kazıma işlemlerini yönetir. İşte sınıfın başlıca metotları:
+
+- `find()`: İlanların URL'lerini çeker ve `self.links` listesine ekler.
+- `save()`: İlanlardaki verileri çeker, temizler, SQL tablosuna ekler ve kaydeder.
+
+## Kullanım Amacı
+
+Bu proje, "hepsiemlak.com" web sitesinden İstanbul'daki satılık ev ilanlarını çekmek ve bu verileri SQL veritabanına kaydetmek amacıyla oluşturulmuştur. Proje, belirli bir web sitesinin veri yapısına bağlıdır ve bu yapının değişmesi durumunda kodları güncellemek gerekebilir.
+
+## Önemli Notlar
+
+- Bu kodlar, web sitesinin yapısına ve verilerin yerleştirilme biçimine dayanmaktadır. Web sitesi yapısında değişiklik olduğunda kodları güncellemek gerekebilir.
+- SQL sunucusu bağlantı bilgileri (sunucu adı, veritabanı adı, kullanıcı adı, şifre) gizli bilgilerdir ve güvenliğinizi sağlamak için korunmalıdır. Bu bilgileri güvenli bir şekilde saklamalısınız.
+- Kodlar, web sitesini aşırı yüklememeye dikkat ederek belirli bir hızda istek gönderir.
+
+Bu dökümantasyon, projenizi daha iyi anlamanıza yardımcı olmalı ve kodlarınızı ihtiyaçlarınıza göre özelleştirmenize yardımcı olmalıdır. Projenizin başarılı olmasını dileriz!
