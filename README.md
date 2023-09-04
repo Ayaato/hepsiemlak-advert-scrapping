@@ -1,4 +1,4 @@
-🚀 #Ev Satın Almak İsteyenler İçin Hızlı Çözüm
+#Ev Satın Almak İsteyenler İçin Hızlı Çözüm 🚀
 Bilgisayarlarımızın veri kazıma ve veritabanı işlemleriyle heyecan verici bir yolculuğa çıkmasını sağlayacak kodları inceleyelim.
 
 📂 **Dosya Yapısı**
